@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: slashdavenull-poi-map-app-dev
+  annotations:
+    argocd/app-name: slashdavenull-poi-map-app-dev
+    backstage.io/kubernetes-id: slashdavenull-poi-map-app
+    backstage.io/kubernetes-namespace: slashdavenull
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: rosa916-rvhvd/slashdavenull-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.rosa916.9nln.p1.openshiftapps.com/dev-pipelines/ns/slashdavenull/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.rosa916.9nln.p1.openshiftapps.com/k8s/ns/slashdavenull/deployments/slashdavenull-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.rosa916.9nln.p1.openshiftapps.com/#https://github.com/rosa916-rvhvd/slashdavenull-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://slashdavenull-poi-map-app-slashdavenull.apps.rosa916.9nln.p1.openshiftapps.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/slashdavenull"
+  system: workshop-system-slashdavenull
+  consumesApis:
+    - gateway-api-slashdavenull
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-slashdavenull
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/slashdavenull"
